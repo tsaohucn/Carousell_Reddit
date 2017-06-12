@@ -4,7 +4,8 @@
   "description": "This is a Reddit for exercise of carousell",
   "main": "app.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "start": "nodemon app.js --exec babel-node"
   },
   "repository": {
     "type": "git",
@@ -17,9 +18,15 @@
   },
   "homepage": "https://github.com/tsaohucn/Carousell_Reddit#readme",
   "dependencies": {
+    "babel-preset-node6": "^11.0.0",
     "express": "^4.15.3"
   },
   "devDependencies": {
-    "mocha": "^3.4.2"
+    "babel-cli": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-preset-env": "^1.5.2",
+    "eslint": "^4.0.0",
+    "mocha": "^3.4.2",
+    "nodemon": "^1.11.0"
   }
 }
