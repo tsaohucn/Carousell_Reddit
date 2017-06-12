@@ -4,7 +4,7 @@
   "description": "This is a Reddit for exercise of carousell",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -18,5 +18,8 @@
   "homepage": "https://github.com/tsaohucn/Carousell_Reddit#readme",
   "dependencies": {
     "express": "^4.15.3"
+  },
+  "devDependencies": {
+    "mocha": "^3.4.2"
   }
 }
