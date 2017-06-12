@@ -1,0 +1,22 @@
+{
+  "name": "carousell_reddit",
+  "version": "1.0.0",
+  "description": "This is a Reddit for exercise of carousell",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tsaohucn/Carousell_Reddit.git"
+  },
+  "author": "tsaohucn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tsaohucn/Carousell_Reddit/issues"
+  },
+  "homepage": "https://github.com/tsaohucn/Carousell_Reddit#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}
