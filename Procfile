@@ -1,1 +1,1 @@
-web: npm start
+web: node_modules/babel-cli/bin/babel-node.js app.js
