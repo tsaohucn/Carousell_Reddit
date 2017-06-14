@@ -12,3 +12,5 @@ yarn-error.log*
 
 # private file
 .coveralls.yml
+.nyc_output
+coverage/
