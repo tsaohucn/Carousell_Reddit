@@ -1,6 +1,5 @@
 language: node_js
 node_js:
-  - "iojs"
-  - "7"
+  - node # latest stable Node.js release
 cache:
-  yarn: true
+  yarn: true # cache yarn in $HOME/.cache/yarn
