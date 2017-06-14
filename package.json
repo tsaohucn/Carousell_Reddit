@@ -4,7 +4,7 @@
   "description": "This is a Reddit for exercise of carousell",
   "main": "app.js",
   "engines": {
-    "node": "6.9.4"
+    "node": "8.1.1"
   },
   "scripts": {
     "test": "mocha --compilers js:babel-core/register",
