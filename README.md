@@ -1,6 +1,7 @@
 # Carousell_Reddit
 
 [![Build Status](https://travis-ci.org/tsaohucn/Carousell_Reddit.svg?branch=master)](https://travis-ci.org/tsaohucn/Carousell_Reddit)
+[![Docker Build Statu](https://img.shields.io/docker/build/tsaohucn/carousell_reddit.svg)]()
 
 This is a Reddit for exercise of carousell
 
@@ -14,6 +15,8 @@ This is a Reddit for exercise of carousell
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://carousellreddit.herokuapp.com/)
 
 **Docker Beginning Quickly !**
+
+[![Docker](https://seeklogo.com/images/D/docker-logo-6D6F987702-seeklogo.com.png)](https://hub.docker.com/r/tsaohucn/carousell_reddit/)
 
 * `docker pull tsaohucn/Carousell_Reddit`
 
