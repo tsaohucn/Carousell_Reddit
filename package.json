@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "This is a Reddit for exercise of carousell",
   "main": "app.js",
+  "engines": {
+    "node": "6.9.4"
+  },
   "scripts": {
     "test": "mocha --compilers js:babel-core/register",
     "start": "nodemon app.js --exec babel-node"
