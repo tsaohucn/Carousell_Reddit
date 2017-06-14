@@ -1,12 +1,14 @@
 "use strict"
 import express from 'express'
 
-const app = express()
-// respond with "hello world" when a GET request is made to the homepage
-app.get('/', function(req, res) {
-  res.send('hello world')
-})
+const app = express();
+
+app.get('/articles/new', function(req, res) {
+  res.status(200).json({ name: 'tobi' });
+});
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
 })
+
+export default app

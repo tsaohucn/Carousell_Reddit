@@ -1,9 +1,18 @@
 import assert from 'assert'
+import request from 'supertest'
+import app from '../app'
 
-describe('Array', function() {
-  describe('#indexOf()', function() {
-    it('should return -1 when the value is not present', function() {
-      assert.equal(-1, [1,2,3].indexOf(4));
-    });
-  });
-});
+describe('GET /articles/new', function() {
+  it('respond with json', function(done) {
+    request(app)
+      .get('/articles/new')
+      .set('Accept', 'application/json')
+      .expect(200, {
+        name: 'tobi'
+      })
+      .end(function(err, res) {
+        if (err) return done(err)
+        done()
+      })
+  })
+})
