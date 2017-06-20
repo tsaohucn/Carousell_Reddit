@@ -1,39 +1,17 @@
-<!-- views/articles/new.ejs -->
-
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <% include ../partials/head %>
-</head>
-<body class="container">
-
-    <header>
-        <% include ../partials/header %>
-    </header>
-
-    <main>
-        <div class="row">
-            <div class="col-sm-8">
-
-                <div class="jumbotron">
-                    <h1>This is great</h1>
-                    <p>Welcome to templating using EJS</p>
-                </div>
-
-            </div>
-            <div class="col-sm-4">
-
-                <div class="well">
-                    <h3>Look I'm A Sidebar!</h3>
-                </div>
-
-            </div>
-        </div>
-    </main>
-
-    <footer>
-        <% include ../partials/footer %>
-    </footer>
-
-</body>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Carousell Reddit</title>
+  </head>
+  <body>
+    <h1>Published new articles</h1>
+    <form action='/articles' method='post'>
+      <label>article title</label><br>
+      <input type='text' name='title'><br>
+      <label>article content</label><br>
+      <textarea name='content' cols="50" rows="5"></textarea><br>
+      <input type='submit' value='Submit'>
+    </form>
+  </body>
 </html>
