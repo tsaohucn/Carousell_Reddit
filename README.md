@@ -1,7 +1,7 @@
 # Carousell_Reddit
 
 [![Build Status](https://travis-ci.org/tsaohucn/Carousell_Reddit.svg?branch=master)](https://travis-ci.org/tsaohucn/Carousell_Reddit)
-[![Docker Build Statu](https://img.shields.io/docker/build/tsaohucn/carousell_reddit.svg)]()
+[![Docker Build Statu](https://img.shields.io/docker/build/tsaohucn/carousell_reddit.svg)](https://hub.docker.com/r/tsaohucn/carousell_reddit/builds/)
 [![Coverage Status](https://coveralls.io/repos/tsaohucn/Carousell_Reddit/badge.svg?branch=master)](https://coveralls.io/r/tsaohucn/Carousell_Reddit?branch=master)
 
 This is a Reddit for exercise of carousell
