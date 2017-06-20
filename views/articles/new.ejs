@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8" />
-    <title>Carousell Reddit</title>
+    <% include ../partials/head %>
   </head>
   <body>
-    <h1>Published new articles</h1>
-    <form action='/articles' method='post'>
-      <label>article title</label><br>
-      <input type='text' name='title'><br>
-      <label>article content</label><br>
-      <textarea name='content' cols="50" rows="5"></textarea><br>
-      <input type='submit' value='Submit'>
-    </form>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1>Published new article</h1>
+          <header>
+            <% include ../partials/header %>
+          </header>
+          <br>
+          <form action='/articles' method='post'>
+            <label>article title</label><br>
+            <input type='text' name='title'><br>
+            <label>article content</label><br>
+            <textarea name='content' cols="50" rows="5"></textarea><br>
+            <input type='submit' value='Submit'>
+          </form>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

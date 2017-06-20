@@ -26,6 +26,7 @@ app.get('/articles/new', function(req, res) {
 })
 
 app.post('/articles', function(req, res) {
+  req.body.votes = 0
   articles.push(req.body)
   res.render('articles/index',{ articles: articles })
 })
