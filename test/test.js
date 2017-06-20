@@ -7,9 +7,7 @@ describe('GET /articles/new', function() {
     request(app)
       .get('/articles/new')
       .set('Accept', 'application/json')
-      .expect(200, {
-        name: 'tobi'
-      })
+      .expect(200)
       .end(function(err, res) {
         if (err) return done(err)
         done()
