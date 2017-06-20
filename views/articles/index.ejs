@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <h1>All Articles</h1>
+    <header>
+        <% include ../partials/header %>
+    </header>
+    <% articles.forEach(function(article){ %>
+      <p><%= article.title %></p>
+    <% }) %>
+  </body>
+</html>
