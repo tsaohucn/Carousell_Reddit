@@ -2,6 +2,7 @@
 import path from 'path'
 import express from 'express'
 import bodyParser from 'body-parser'
+import uuidv4 from 'uuid/v4'
 
 const app = express()
 
@@ -11,10 +12,10 @@ app.use(express.static('public'))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-var articles = new Array
+var articles = new Object
 //routes
 app.get('/', function(req, res) {
-  res.render('index')
+  res.redirect('/articles')
 })
 
 app.get('/articles', function(req, res) {
@@ -27,8 +28,20 @@ app.get('/articles/new', function(req, res) {
 
 app.post('/articles', function(req, res) {
   req.body.votes = 0
-  articles.push(req.body)
+  articles[uuidv4()] = req.body
   res.render('articles/index',{ articles: articles })
+})
+
+app.post('/thumbsUp', function(req, res) {
+  articles[req.body.uuid].votes ++
+  res.send(String(articles[req.body.uuid].votes))
+})
+
+app.post('/thumbsDown', function(req, res) {
+  if (articles[req.body.uuid].votes > 0) {
+    articles[req.body.uuid].votes --
+  }
+  res.send(String(articles[req.body.uuid].votes))
 })
 
 //server
