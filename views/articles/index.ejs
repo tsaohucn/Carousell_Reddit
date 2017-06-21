@@ -2,31 +2,34 @@
 <html>
   <head>
     <% include ../partials/head %>
+    <script src="/js/thumbsUp.js"></script>
+    <script src="/js/thumbsDown.js"></script>
   </head>
   <body>
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
-          <h1>All Articles</h1>
+          <h1>Articles</h1>
           <header>
             <% include ../partials/header %>
           </header>
           <br>
-          <% articles.forEach(function(article){ %>
+          <% Object.keys(articles).forEach(function(uuid){ %>
             <div class="panel panel-default">
               <div class="panel-heading">
-                <span><%= article.votes %></span>
+                <i class="fa fa-gratipay"></i>
+                <span id="<%= uuid %>"><%= articles[uuid].votes %></span>
                 <div class="btn-group" style="float:right;">
-                  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span></button>
-                  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-down"></span></button>
+                  <button onclick="thumbsUp('<%= uuid %>')" type="button" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+                  <button type="button" onclick="thumbsDown('<%= uuid %>')" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-down"></span></button>
                 </div>
                 <div class="clearfix"></div>
               </div>
               <div class="panel-body">
                 <div class="media">
                   <div class="media-body">
-                    <h4 class="media-heading"><%= article.title %></h4>
-                    <%= article.content %>    
+                    <h4 class="media-heading"><%= articles[uuid].title %></h4>
+                    <%= articles[uuid].content %>    
                     <div class="clearfix"></div>                
                   </div>
                 </div>
