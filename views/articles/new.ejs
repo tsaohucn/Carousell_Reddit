@@ -11,7 +11,14 @@
           <header>
             <% include ../partials/header %>
           </header>
-          <br>
+          <% if (error) { %>
+            <br>
+            <div class="alert alert-danger">
+              <%= error %>
+            </div>
+          <% } else { %>
+            <br>
+          <% } %>
           <form action='/articles' method='post'>
             <label>Article title</label><br>
             <input type='text' name='title'><br>
