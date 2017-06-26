@@ -27,20 +27,21 @@ app.use(flash())
 // save articles in memory
 var articles = new Array
 
-//routes
+// routes
+// home page
 app.get('/', function(req, res) {
   const articles_top_20 = articles.slice().sort(function(a,b){return b.votes-a.votes}).slice(0,20)
   res.render('index',{ articles: articles_top_20 })
 })
-
+// all articles
 app.get('/articles', function(req, res) {
   res.render('articles/index',{ articles: articles })
 })
-
+// form
 app.get('/articles/new', function(req, res) {
   res.render('articles/new',{ error: null })
 })
-
+// publish new article
 app.post('/articles', function(req, res) {
   if (req.body.content.length > 255 || req.body.title.length > 20) {
     req.flash('error',"Post Fail : Your content can't over 255 charts and title can't over 20 charts")
