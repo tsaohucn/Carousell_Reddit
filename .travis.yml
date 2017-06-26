@@ -3,4 +3,4 @@ node_js:
   - node # latest stable Node.js release
 cache:
   yarn: true # cache yarn in $HOME/.cache/yarn
-after_success: 'npm run coveralls'
+after_success: 'npm run coverage'
