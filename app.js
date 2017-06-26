@@ -5,6 +5,7 @@ import session from 'express-session'
 import bodyParser from 'body-parser'
 import uuidv4 from 'uuid/v4'
 import flash from 'connect-flash'
+import dateTime from 'node-datetime'
 
 // config
 const app = express()
@@ -21,11 +22,12 @@ app.use(session({
 }))
 app.use(flash())
 // save articles in memory
-var articles = new Object
+var articles = new Array
 
 //routes
 app.get('/', function(req, res) {
-  res.redirect('/articles')
+  let articles_top_20 = articles.slice().sort(function(a,b){return b.votes-a.votes}).slice(0,20)
+  res.render('index',{ articles: articles_top_20 })
 })
 
 app.get('/articles', function(req, res) {
@@ -41,22 +43,28 @@ app.post('/articles', function(req, res) {
     req.flash('error',"Post Fail : Your content can't over 255 charts and title can't over 20 charts")
     res.render('articles/new',{ error: req.flash('error') })
   } else {
-    req.body.votes = 0
-    articles[uuidv4()] = req.body
+    let article = req.body
+    article.votes = 0
+    article.id = uuidv4()
+    article.postTime = dateTime.create().format('Y-m-d H:M:S');
+    articles.push(article)
     res.render('articles/index',{ articles: articles })
   }
 })
+
 // ajax API
 app.post('/thumbsUp', function(req, res) {
-  articles[req.body.uuid].votes ++
-  res.send(String(articles[req.body.uuid].votes))
+  let article = articles.find(ele => ele.id === req.body.uuid)
+  article.votes ++
+  res.send(String(article.votes))
 })
 
 app.post('/thumbsDown', function(req, res) {
-  if (articles[req.body.uuid].votes > 0) {
-    articles[req.body.uuid].votes --
+  let article = articles.find(ele => ele.id === req.body.uuid)
+  if (article.votes > 0) {
+    article.votes --
   }
-  res.send(String(articles[req.body.uuid].votes))
+  res.send(String(article.votes))
 })
 
 //server
