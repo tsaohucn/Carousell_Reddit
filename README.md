@@ -8,7 +8,7 @@ This is a Reddit for exercise of carousell
 
 # Beginning Instructions
 
-##Localhost Qickly !
+## Localhost Qickly !
 
 Clone the app in your localhost and start the app quickly. 
 
@@ -21,13 +21,13 @@ The way dependency with what libraries you have installed in your computer, for 
 * Run Tests : `npm test`
 * Start App : `npm start`
 
-##Demo Qickly !
+## Demo Qickly !
 
 Click on the button to see online demon quickly.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://carousellreddit.herokuapp.com/)
 
-##Docker Quickly !
+## Docker Quickly !
 
 Make sure you have installed docker in your computer, then you can follow the instructions below start the app quickly, the app work correctly with docker Version 17.03.1-ce-mac12 (17661), you can try with your original older docker version first, or update to the newest docker version if it didn't work with older version. 
 
