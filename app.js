@@ -7,6 +7,7 @@ import uuidv4 from 'uuid/v4'
 import flash from 'connect-flash'
 import dateTime from 'node-datetime'
 import xssFilters from 'xss-filters'
+import csurf from 'csurf'
 
 // config
 const app = express()
@@ -28,7 +29,7 @@ var articles = new Array
 
 //routes
 app.get('/', function(req, res) {
-  let articles_top_20 = articles.slice().sort(function(a,b){return b.votes-a.votes}).slice(0,20)
+  const articles_top_20 = articles.slice().sort(function(a,b){return b.votes-a.votes}).slice(0,20)
   res.render('index',{ articles: articles_top_20 })
 })
 
@@ -45,11 +46,11 @@ app.post('/articles', function(req, res) {
     req.flash('error',"Post Fail : Your content can't over 255 charts and title can't over 20 charts")
     res.render('articles/new',{ error: req.flash('error') })
   } else {
-    let title = req.body.title
-    let content = req.body.content
-    let id = uuidv4()
-    let postTime = dateTime.create().format('Y-m-d H:M:S')
-    let article = { id: id, title: title, content: content, votes: 0, postTime: postTime }
+    const title = req.body.title
+    const content = req.body.content
+    const id = uuidv4()
+    const postTime = dateTime.create().format('Y-m-d H:M:S')
+    const article = { id: id, title: title, content: content, votes: 0, postTime: postTime }
     articles.push(article)
     res.render('articles/index',{ articles: articles })
   }
