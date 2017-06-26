@@ -45,8 +45,8 @@ app.post('/articles', function(req, res) {
     req.flash('error',"Post Fail : Your content can't over 255 charts and title can't over 20 charts")
     res.render('articles/new',{ error: req.flash('error') })
   } else {
-    let title = xssFilters.inHTMLData(req.body.title)
-    let content = xssFilters.inHTMLData(req.body.content)
+    let title = req.body.title
+    let content = req.body.content
     let id = uuidv4()
     let postTime = dateTime.create().format('Y-m-d H:M:S')
     let article = { id: id, title: title, content: content, votes: 0, postTime: postTime }
