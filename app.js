@@ -6,6 +6,7 @@ import bodyParser from 'body-parser'
 import uuidv4 from 'uuid/v4'
 import flash from 'connect-flash'
 import dateTime from 'node-datetime'
+import xssFilters from 'xss-filters'
 
 // config
 const app = express()
@@ -21,6 +22,7 @@ app.use(session({
   cookie: { secure: true }
 }))
 app.use(flash())
+
 // save articles in memory
 var articles = new Array
 
@@ -43,10 +45,11 @@ app.post('/articles', function(req, res) {
     req.flash('error',"Post Fail : Your content can't over 255 charts and title can't over 20 charts")
     res.render('articles/new',{ error: req.flash('error') })
   } else {
-    let article = req.body
-    article.votes = 0
-    article.id = uuidv4()
-    article.postTime = dateTime.create().format('Y-m-d H:M:S');
+    let title = xssFilters.inHTMLData(req.body.title)
+    let content = xssFilters.inHTMLData(req.body.content)
+    let id = uuidv4()
+    let postTime = dateTime.create().format('Y-m-d H:M:S')
+    let article = { id: id, title: title, content: content, votes: 0, postTime: postTime }
     articles.push(article)
     res.render('articles/index',{ articles: articles })
   }
