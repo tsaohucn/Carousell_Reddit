@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <% include ../partials/head %>
+    <% include ./partials/head %>
     <script src="/js/thumbsUp.js"></script>
     <script src="/js/thumbsDown.js"></script>
   </head>
@@ -9,9 +9,9 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
-          <h1>Articles</h1>
+          <h1>Top 20 Articles</h1>
           <header>
-            <% include ../partials/header %>
+            <% include ./partials/header %>
           </header>
           <br>
           <% articles.forEach(function(article){ %>
@@ -29,7 +29,7 @@
                 <div class="media">
                   <div class="media-body">
                     <h4 class="media-heading"><%= article.title %></h4>
-                    <%= article.content %>
+                    <%= article.content %>    
                     <div class="clearfix"></div>                
                   </div>
                 </div>
