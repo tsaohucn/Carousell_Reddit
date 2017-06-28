@@ -33,6 +33,7 @@ var articles = new Array
 // Get /
 // #### home page to show top 20 articles sort by votes ####
 app.get('/', function(req, res) {
+  // #### use slice() to clone a new articles then sort and return only top 20 articles
   const articles_top_20 = articles.slice().sort(function(a,b){return b.votes-a.votes}).slice(0,20)
   res.render('index',{ articles: articles_top_20 })
 })
@@ -71,19 +72,23 @@ app.post('/articles', function(req, res) {
 
 // ------Ajax API------
 // #### for thumbsUp and thumbsDown ####
-// #### return votes to let view page to refresh votes count ####
+// Post /thumbsUp
 app.post('/thumbsUp', function(req, res) {
   let article = articles.find(ele => ele.id === req.body.uuid)
   article.votes ++
+  // #### return votes count to let view page to refresh votes count ####
   res.send(String(article.votes))
 })
 
+// Post /thumbsDown
 app.post('/thumbsDown', function(req, res) {
+  // #### find correspond article by uuid that user click on
   let article = articles.find(ele => ele.id === req.body.uuid)
   // #### votest min must be zero ####
   if (article.votes > 0) {
     article.votes --
   }
+  // #### return votes count to let view page to refresh votes count ####
   res.send(String(article.votes))
 })
 
