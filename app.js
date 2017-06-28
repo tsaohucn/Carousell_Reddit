@@ -13,6 +13,7 @@ import csurf from 'csurf'
 const app = express()
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
+app.set('port', process.env.PORT || 3000);
 app.use(express.static('public'))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -73,8 +74,8 @@ app.post('/thumbsDown', function(req, res) {
 })
 
 //server
-app.listen(process.env.PORT || 3000, function () {
+var server = app.listen(app.get('port'), function () {
   console.log('Example app listening on port 3000!')
 })
 
-export default app
+export { app, server }

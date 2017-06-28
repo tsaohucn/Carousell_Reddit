@@ -1,8 +1,8 @@
 import request from 'supertest'
-import app from '../app'
 import expect from 'expect.js'
 import sinon from 'sinon'
 import ejs from 'ejs'
+import { app } from '../app'
 
 describe("app",function(){
 
@@ -123,14 +123,4 @@ describe("app",function(){
     });
   });
 
-  describe('POST thumbsUp', function() {
-    it('should exist', function(done){
-      request(app)
-          .post('/thumbsUp')
-          .expect(200)
-          .end(function(err, res){
-              done();
-          })
-    })
-  });
 })
