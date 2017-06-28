@@ -13,9 +13,14 @@ describe("app",function(){
     after(function() {
       return this.spy.restore();
     });
-    it('should exist', function() {
-      return request(app).get('/').expect(200);
-    });
+    it('should exist', function(done){
+      request(app)
+          .get('/')
+          .end(function(err, res){
+            expect(res.status).to.be.eql(200)
+              done();
+          })
+    })
     return it('should render the "index" view', function() {
       return expect(this.spy.getCall(0).args[0]).to.be.eql('index');
     });
@@ -28,9 +33,14 @@ describe("app",function(){
     after(function() {
       return this.spy.restore();
     });
-    it('should exist', function() {
-      return request(app).get('/articles').expect(200);
-    });
+    it('should exist', function(done){
+      request(app)
+          .get('/articles')
+          .end(function(err, res){
+            expect(res.status).to.be.eql(200)
+              done();
+          })
+    })
     return it('should render the "articles/index" view', function() {
       return expect(this.spy.getCall(0).args[0]).to.be.eql('articles/index');
     });
@@ -43,9 +53,14 @@ describe("app",function(){
     after(function() {
       return this.spy.restore();
     });
-    it('should exist', function() {
-      return request(app).get('/articles/new').expect(200);
-    });
+    it('should exist', function(done){
+      request(app)
+          .get('/articles/new')
+          .end(function(err, res){
+            expect(res.status).to.be.eql(200)
+              done();
+          })
+    })
     return it('should render the "articles/new" view', function() {
       return expect(this.spy.getCall(0).args[0]).to.be.eql('articles/new');
     });
@@ -65,14 +80,12 @@ describe("app",function(){
             'title' : 'test',
             'content' : 'test'
           })
-          .expect(200)
           .end(function(err, res){
+            expect(res.status).to.be.eql(302)
+            expect(res.header['location']).to.contain('/articles')
               done();
           })
     })
-    return it('should render the "articles/index" view', function() {
-      return expect(this.spy.getCall(0).args[0]).to.be.eql('articles/index');
-    });
   });
 
   describe('POST articles with title > 20 and content < 255', function() {

@@ -64,7 +64,7 @@ describe("app",function(){
           'content' : 'new content'
         })
         .end(function(err, res){
-          expect(res.status).to.be.eql(200)
+          expect(res.status).to.be.eql(302)
           expect(app.__get__("articles").length).to.be.eql(3)
           done();
       })
