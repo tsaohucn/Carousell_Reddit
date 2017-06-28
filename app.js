@@ -9,7 +9,7 @@ import dateTime from 'node-datetime'
 import xssFilters from 'xss-filters'
 import csurf from 'csurf'
 
-// config
+// app config
 const app = express()
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
@@ -25,24 +25,27 @@ app.use(session({
 }))
 app.use(flash())
 
-// save articles in memory
+// #### Save articles in memory ####
 var articles = new Array
 
-// routes
-// home page
+// #### routes ####
+// #### http get ####
+// #### Home page to show top 20 articles sort by votes ####
 app.get('/', function(req, res) {
   const articles_top_20 = articles.slice().sort(function(a,b){return b.votes-a.votes}).slice(0,20)
   res.render('index',{ articles: articles_top_20 })
 })
-// all articles
+// #### Articles to show all articles####
 app.get('/articles', function(req, res) {
   res.render('articles/index',{ articles: articles })
 })
-// form
+// #### Article new page to show form let user can create new article ####
 app.get('/articles/new', function(req, res) {
   res.render('articles/new',{ error: null })
 })
-// publish new article
+// #### http post ####
+// #### publish new article and save in global variable####
+// #### charts need correspond limit or return Article new page####
 app.post('/articles', function(req, res) {
   if (req.body.content.length > 255 || req.body.title.length > 20) {
     req.flash('error',"Post Fail : Your content can't over 255 charts and title can't over 20 charts")
@@ -58,7 +61,8 @@ app.post('/articles', function(req, res) {
   }
 })
 
-// ajax API
+// #### Ajax API for thumbsUp and thumbsDown####
+// #### return votes to let view page to refresh votes count####
 app.post('/thumbsUp', function(req, res) {
   let article = articles.find(ele => ele.id === req.body.uuid)
   article.votes ++
@@ -73,7 +77,7 @@ app.post('/thumbsDown', function(req, res) {
   res.send(String(article.votes))
 })
 
-//server
+// server
 var server = app.listen(app.get('port'), function () {
   console.log('Example app listening on port 3000!')
 })
